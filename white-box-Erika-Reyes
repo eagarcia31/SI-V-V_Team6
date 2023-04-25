@@ -1,0 +1,19 @@
+def process_payment(selection, payment_method):
+    """Process the user's payment and dispense the selected item."""
+    price = ITEM_PRICES[selection]
+    if payment_method == "cash":
+        while True:
+            amount = float(input(f"Please insert ${price:.2f}: "))
+            if amount >= price:
+                change = amount - price
+                print(f"Thank you for your purchase! Here's your {selection}.")
+                if change > 0:
+                    print(f"Don't forget your change: ${change:.2f}")
+                break
+            else:
+                print("Please insert more money.")
+    elif payment_method == "credit":
+        print(f"Thank you for your purchase! You have been charged ${price:.2f} to your credit card.")
+        print(f"Here's your {selection}.")
+    else:
+        print("Sorry, we do not accept that payment method.")
