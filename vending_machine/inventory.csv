@@ -1,4 +1,6 @@
 item,price,quantity
-coke,1.5,10
-pepsi,1.25,10
-water,1,10
+Coke, 1.5, 10
+Pepsi, 1.25, 10
+Dr. Pepper, 1.5, 10
+Water, 1,10, 20
+Kit-Kat, 1.25, 5

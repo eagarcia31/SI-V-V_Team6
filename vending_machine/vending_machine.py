@@ -158,8 +158,3 @@ inventory = Inventory(csv_filename)
 payment_manager = PaymentManager()
 vending_machine = VendingMachine(inventory, payment_manager)
 vending_machine_gui = VendingMachineGUI(vending_machine)
-#example fdor csv file: 
-# item,price,quantity
-# Coke,1.50,10
-# Pepsi,1.25,10
-# Water,1.00,10
