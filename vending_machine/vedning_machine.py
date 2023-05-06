@@ -153,7 +153,7 @@ class VendingMachineGUI:
         else:
             self.result_text.set("Payment unsuccessful. Please try again.")
 
-csv_filename = "inventory.csv"
+csv_filename = "vending_machine/inventory.csv"
 inventory = Inventory(csv_filename)
 payment_manager = PaymentManager()
 vending_machine = VendingMachine(inventory, payment_manager)
