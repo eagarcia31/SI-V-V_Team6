@@ -232,7 +232,7 @@ class VendingMachineGUI:
                 self.vending_machine.dispense_item(selection)
                 self.hide_cash_widgets()
                 # self.result_text.set(f"Thank you for your purchase!\nHere's your {selection}.\n\nSelect a new item if you'd like!")
-                self.result_text.set(f"Thank you for your purchase! \nYou have been charged ${price:.2f} to your credit card.\n\nSelect a new item if you'd like!")
+                self.result_text.set(f"Thank you for your purchase!\nYou have been charged ${price:.2f} to your credit card.\nHere's your {selection}.\n\nSelect a new item if you'd like!" )
             else:
                 self.result_text.set("Payment unsuccessful. Please try again.")
 
