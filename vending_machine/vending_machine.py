@@ -185,25 +185,22 @@ class VendingMachineGUI:
             return
         else:
             self.result_text.set(f"You've selected {item}.\nPlease select a payment method above.")
-            self.item_selected = item  # Update the item_selected attribute
-            self.create_payment_widgets()  # Display payment method buttons
+            self.item_selected = item  
+            self.create_payment_widgets()  # Displays payment method buttons
 
     def select_cash_payment(self):
         self.payment_text = "cash"
-        self.create_cash_widgets()  # Display cash input field
+        self.create_cash_widgets()  # Displays cash input field
 
     def select_credit_payment(self):
         self.payment_text = "credit"
-        self.create_cash_widgets()  # Display cash input field
-        self.hide_cash_widgets()  # Hide cash input field
+        self.hide_cash_widgets()  # Hides cash input field
 
         self.pay_button = tk.Button(self.root, text="Pay", command=self.process_payment)
         self.pay_button.grid(row=6, column=1, sticky="w", pady=5)
 
     def hide_credit_widgets(self):
-        # Add code to hide credit input widgets
         pass
-
 
     def process_payment(self):
         print("inside")
