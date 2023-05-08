@@ -1,6 +1,6 @@
 import csv
 import unittest
-from vending_machine import Inventory, PaymentManager
+from vending_machine import Inventory, PaymentManager, VendingMachine
 
 class Tests(unittest.TestCase):
 
@@ -72,6 +72,26 @@ class Tests(unittest.TestCase):
         self.assertEqual(returned_change, 0, f"Test case 9 - Return Change (Black Box): Incorrect returned change. Expected: 0, Actual: {returned_change}")
         self.assertEqual(payment_manager.check_cashbox(), 20.0, f"Test case 9 - Return Change (Black Box): Cashbox not updated correctly. Expected: 20.0, Actual: {payment_manager.check_cashbox()}")
         print(f"Test case 9 - Return Change (Black Box): Returned change: {returned_change}")
+
+    def test_vending_machine_black_box(self):
+        vm = VendingMachine("vending_machine/inventory.csv", 50.0)
+
+        # TC10 - successful transaction
+        item_to_purchase = "Coke"
+        payment = 5.0
+        expected_change = payment - vm.inventory.get_item_price(item_to_purchase)
+        purchased, change = vm.purchase_item(item_to_purchase, payment)
+        self.assertTrue(purchased, f"Test case 10 - Vending Machine (Black Box): Item '{item_to_purchase}' not purchased")
+        self.assertEqual(change, expected_change, f"Test case 10 - Vending Machine (Black Box): Incorrect change. Expected: {expected_change}, Actual: {change}")
+        print(f"Test case 10 - Vending Machine (Black Box): Item '{item_to_purchase}' purchased, change: {change}")
+
+        # TC11 - insufficient payment
+        item_to_purchase = "Coke"
+        payment = 1.0
+        purchased, change = vm.purchase_item(item_to_purchase, payment)
+        self.assertFalse(purchased, f"Test case 11 - Vending Machine (Black Box): Item '{item_to_purchase}' purchased with insufficient payment")
+        self.assertEqual(change, payment, f"Test case 11 - Vending Machine (Black Box): Incorrect change. Expected: {payment}, Actual: {change}")
+        print(f"Test case 11 - Vending Machine (Black Box): Item '{item_to_purchase}' not purchased, change: {change}")
 
 if __name__ == '__main__':
     unittest.main()
